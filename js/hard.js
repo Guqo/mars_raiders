@@ -6,10 +6,10 @@ const c = canvas.getContext("2d")
 
 class Player {
     constructor() {
-        this.w = 40;
+        this.w = 30;
         this.x = 540 - this.w / 2;
-        this.y = 700;
-        this.h = 40;
+        this.y = 750;
+        this.h = 20;
         this.xs = 0;
         this.holdA = false;
         this.holdD = false;
@@ -43,7 +43,7 @@ class Shoot {
         this.x = x;
         this.y = y;
         this.h = 20;
-        this.w = 10;
+        this.w = 5;
     }
     draw() {
         c.drawImage(bullet, this.x, this.y, this.w, this.h);
@@ -55,8 +55,8 @@ class Enemy {
     constructor(x, y) {
         this.x = x;
         this.y = y;
-        this.w = 35;
-        this.h = 35;
+        this.w = 40;
+        this.h = 30;
         this.destroy = false;
     }
     draw() {
@@ -72,7 +72,7 @@ class Enemy {
         if (this.x < 0) {
             zmenitSmer = true;
         }
-        if (this.y > 650) {
+        if (this.y > 700) {
             gameOver = true;
         }
         if (Math.random() < 0.001) {
@@ -85,8 +85,8 @@ class ShootEnemy {
     constructor(x, y) {
         this.x = x;
         this.y = y;
-        this.h = 30;
-        this.w = 10;
+        this.h = 20;
+        this.w = 5;
     }
     draw() {
         c.drawImage(bulletEnemy, this.x, this.y, this.w, this.h);
@@ -126,13 +126,15 @@ let gameOver = false;
 let shootEnemy = [];
 let score = 0;
 let rocket = new Image();
-rocket.src = "pepik.png";
+rocket.src = "img/player.png";
 let bullet = new Image();
-bullet.src = "pepa.png";
+bullet.src = "img/bullet.png";
 let bulletEnemy = new Image();
-bulletEnemy.src = "nuclear.png";
+bulletEnemy.src = "img/bullet_enemy.png";
 let emzak = new Image();
-emzak.src = "pepa2.png";
+emzak.src = "img/enemy.png";
+let star = new Image();
+star.src = "img/star.png";
 
 // main loop
 function main(timestamp) {
@@ -140,8 +142,7 @@ function main(timestamp) {
     evalFPS(timestamp)
 
     // váš kód
-    c.fillStyle = "grey";
-    c.fillRect(0, 0, 1080, 800);
+    c.drawImage(star, 0, 0);
     player.draw();
     shoot.draw();
     for (var i in nepratele) {
@@ -178,9 +179,9 @@ function main(timestamp) {
         c.fillText("Game Over, but you won!", 1080 / 2, 800 / 2);
     }
     c.fillStyle = "white"
-    c.font = "15px calibri";
+    c.font = "20px calibri";
     c.textAlign = "left";
-    c.fillText("Score: " + score, 10, 20)
+    c.fillText("SCORE: " + score, 10, 25)
 
     // spuštění příštího cyklu
     if (!pause)

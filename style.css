@@ -1,7 +1,51 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Mono&display=swap');
 canvas {
-    margin-top: 80px;
+    margin-top: 70px;
 }
 
 body {
-    background-color: black;
+    background-image: url(img/star.png);
+}
+
+span {
+    background-color: lime;
+    color: black;
+    text-align: center;
+    border: 1px solid lime;
+    font-size: 30px;
+    font-family: 'Space Mono', monospace;
+    padding: 20px 40px;
+}
+
+span:hover {
+    border: 1px solid black;
+}
+
+a {
+    color: black;
+}
+
+a:hover {
+    color: black;
+}
+
+a:visited {
+    color: black;
+}
+
+h1 {
+    text-align: center;
+    color: lime;
+    font-family: 'Space Mono', monospace;
+    margin-top: 175px;
+    font-size: 50px;
+}
+
+div {
+    text-align: center;
+    margin-top: 175px;
+}
+
+.difficulty {
+    margin: 100px;
 }
