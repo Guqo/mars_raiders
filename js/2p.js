@@ -1,5 +1,5 @@
 // canvas
-const canvas = document.getElementById("canvas")
+let canvas = document.getElementById("canvas")
 const c = canvas.getContext("2d")
 
 // třídy
@@ -7,7 +7,7 @@ const c = canvas.getContext("2d")
 class Player {
     constructor() {
         this.w = 30;
-        this.x = 540 - this.w / 2;
+        this.x = 500 - this.w / 2;
         this.y = 750;
         this.h = 20;
         this.xs = 0;
@@ -38,10 +38,10 @@ class Player {
     }
 }
 
-class Player2 {
+class Hracek {
     constructor() {
         this.w = 30;
-        this.x = 540 - this.w / 2;
+        this.x = 580 - this.w / 2;
         this.y = 750;
         this.h = 20;
         this.xs = 0;
@@ -85,7 +85,7 @@ class Shoot {
     }
 }
 
-class Shoot2 {
+class Strelicka {
     constructor(x, y) {
         this.x = x;
         this.y = y;
@@ -113,9 +113,9 @@ class Enemy {
             this.destroy = true;
             shoot.y = -100;
         }
-        if (kolize(this, shoot2)) {
+        if (kolize(this, strela)) {
             this.destroy = true;
-            shoot.y = -100;
+            strela.y = -100;
         }
         this.x += 1 * smer;
         if (this.x > 1080 - this.w) {
@@ -146,7 +146,7 @@ class ShootEnemy {
         if (kolize(player, this)) {
             gameOver = true;
         }
-        if (kolize(player2, this)) {
+        if (kolize(hracek, this)) {
             gameOver = true;
         }
     }
@@ -168,9 +168,9 @@ let timeStamp = 0
 let fps = 0
 let dt = 0
 let player = new Player();
-let player2 = new Player();
+let hracek = new Hracek();
 let shoot = new Shoot(-100, -100);
-let shoot2 = new Shoot(-100, -100);
+let strela = new Strelicka(-100, -100);
 let nepratele = [];
 for (let i = 0; i < 15; i++) {
     for (let j = 0; j < 10; j++) {
@@ -205,9 +205,9 @@ function main(timestamp) {
     // váš kód
     c.drawImage(star, 0, 0);
     player.draw();
-    player2.draw();
+    hracek.draw();
     shoot.draw();
-    shoot2.draw();
+    strela.draw();
     for (var i in nepratele) {
         nepratele[i].draw();
     }
@@ -233,6 +233,7 @@ function main(timestamp) {
         c.font = "100px calibri";
         c.textAlign = "center";
         c.fillText("Game Over!", 1080 / 2, 800 / 2);
+        document.getElementById("demo").addEventListener("click", myFunction);
     }
     if (nepratele.length == 0) {
         pause = true;
@@ -259,14 +260,14 @@ canvas.addEventListener("click", e => {
 addEventListener("keydown", function(e) {
     console.log(e.code);
     if (e.code == "ArrowLeft") {
-        player2.holdA = true;
+        hracek.holdA = true;
     }
     if (e.code == "ArrowRight") {
-        player2.holdD = true;
+        hracek.holdD = true;
     }
-    if (e.code == "ArrowUp" && shoot2.y < 0) {
-        shoot2.x = player2.x + player2.w / 2;
-        shoot2.y = player2.y;
+    if (e.code == "ArrowUp" && strela.y < 0) {
+        strela.x = hracek.x + hracek.w / 2;
+        strela.y = hracek.y;
     }
     if (e.code == "KeyA") {
         player.holdA = true;
@@ -283,10 +284,10 @@ addEventListener("keydown", function(e) {
 addEventListener("keyup", function(e) {
     console.log(e.code);
     if (e.code == "ArrowLeft") {
-        player2.holdA = false;
+        hracek.holdA = false;
     }
     if (e.code == "ArrowRight") {
-        player2.holdD = false;
+        hracek.holdD = false;
     }
     if (e.code == "KeyA") {
         player.holdA = false;
