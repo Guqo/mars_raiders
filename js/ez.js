@@ -126,15 +126,15 @@ let gameOver = false;
 let shootEnemy = [];
 let score = 0;
 let rocket = new Image();
-rocket.src = "img/player.png";
+rocket.src = "../img/player.png";
 let bullet = new Image();
-bullet.src = "img/bullet.png";
+bullet.src = "../img/bullet.png";
 let bulletEnemy = new Image();
-bulletEnemy.src = "img/bullet_enemy.png";
+bulletEnemy.src = "../img/bullet_enemy.png";
 let emzak = new Image();
-emzak.src = "img/enemy.png";
+emzak.src = "../img/enemy.png";
 let star = new Image();
-star.src = "img/star.png";
+star.src = "../img/star.png";
 
 // main loop
 function main(timestamp) {

@@ -37,7 +37,7 @@ class Player {
         }
     }
 }
-
+//2. hráč
 class Hracek {
     constructor() {
         this.w = 30;
@@ -85,6 +85,7 @@ class Shoot {
     }
 }
 
+//střela 2. hráče
 class Strelicka {
     constructor(x, y) {
         this.x = x;
@@ -183,19 +184,19 @@ let gameOver = false;
 let shootEnemy = [];
 let score = 0;
 let rocket = new Image();
-rocket.src = "img/player.png";
+rocket.src = "../img/player.png";
 let bullet = new Image();
-bullet.src = "img/bullet.png";
+bullet.src = "../img/bullet.png";
 let bulletEnemy = new Image();
-bulletEnemy.src = "img/bullet_enemy.png";
+bulletEnemy.src = "../img/bullet_enemy.png";
 let emzak = new Image();
-emzak.src = "img/enemy.png";
+emzak.src = "../img/enemy.png";
 let star = new Image();
-star.src = "img/star.png";
+star.src = "../img/star.png";
 let hrac2 = new Image();
-hrac2.src = "img/player2.png";
+hrac2.src = "../img/player2.png";
 let bullet2 = new Image();
-bullet2.src = "img/bullet2.png";
+bullet2.src = "../img/bullet2.png";
 
 // main loop
 function main(timestamp) {
@@ -233,7 +234,6 @@ function main(timestamp) {
         c.font = "100px calibri";
         c.textAlign = "center";
         c.fillText("Game Over!", 1080 / 2, 800 / 2);
-        document.getElementById("demo").addEventListener("click", myFunction);
     }
     if (nepratele.length == 0) {
         pause = true;
